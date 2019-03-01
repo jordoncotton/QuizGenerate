@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QuizGenerate.Form1;
 
 namespace QuizGenerate
 {
@@ -14,27 +15,38 @@ namespace QuizGenerate
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
-        public class Question
+        public class  Question
         {
             private readonly string Ask;
+
+            private Question ask = new Question();
         }
+
+        
 
         public class Answer
         {
             private readonly string Give;
+
+            private Answer give = new Answer();
+
+
         }
 
         public class Quiz
         {
-           //
-        }
 
+        }  
+            
         private void Form1_Load(object sender, EventArgs e)
         {
+            foreach(Question
+            {
 
+            }
         }
 
         private void Generate(object sender, EventArgs e)
@@ -51,5 +63,11 @@ namespace QuizGenerate
         {
 
         }
+
+        private static void Main(string[] args)
+        {
+
+        }
     }
+
 }
