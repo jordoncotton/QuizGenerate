@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static QuizGenerate.Form1;
 
@@ -21,8 +16,8 @@ namespace QuizGenerate
         public class  Question
         {
             private readonly string Ask;
-
-            private Question ask = new Question();
+            
+            Question ask = new Question();
         }
 
         
@@ -31,22 +26,17 @@ namespace QuizGenerate
         {
             private readonly string Give;
 
-            private Answer give = new Answer();
-
-
+            Answer give = new Answer();
         }
 
         public class Quiz
         {
-
+            Question: List<Question>
         }  
             
         private void Form1_Load(object sender, EventArgs e)
         {
-            foreach(Question
-            {
-
-            }
+            
         }
 
         private void Generate(object sender, EventArgs e)
