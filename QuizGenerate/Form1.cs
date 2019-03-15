@@ -10,30 +10,27 @@ namespace QuizGenerate
     {
         public Form1()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
-        public class  Question
+        struct Question
         {
-            private readonly string Ask;
-            
-            Question ask = new Question();
+            public string QuestionText;
+
+            public string[] Choices;
+
+            public int Answer;
         }
 
-        
-
-        public class Answer
+        struct Answer
         {
-            private readonly string Give;
+            //public string AnswerBox;
 
-            Answer give = new Answer();
+            //public string[] question;
+
+            //public int quiz;
         }
-
-        public class Quiz
-        {
-            Question: List<Question>
-        }  
-            
+    
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -54,10 +51,53 @@ namespace QuizGenerate
 
         }
 
-        private static void Main(string[] args)
+        private static void Quiz(string[] args)
         {
+            var questions = new List<Question>();
 
+            using(var quizFileReader = new System.IO.StreamReader("questions.txt"))
+            {
+                string line;
+                Question question;
+
+                while ((line = quizFileReader.ReadLine()) != null)
+                {
+                    if (line.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    question = new Question()
+                    {
+                        QuestionText = line,
+                        Choices = new string[]
+                        {
+                            quizFileReader.ReadLine(),
+                            quizFileReader.ReadLine(),
+                            quizFileReader.ReadLine(),
+                            quizFileReader.ReadLine()
+                        }
+                    };
+
+                    question.Answer = -1;
+
+#pragma warning disable CS0162 // Unreachable code detected
+                    for (int i = 0; i < 4; i ++)
+#pragma warning restore CS0162 // Unreachable code detected
+                    {
+                        if (question.Choices[i].StartsWith("!"))
+
+                        question.Choices[i] = question.Choices[i].Substring(1);
+                        question.Answer = 1;
+                        break;
+                    }
+                    if(question.Answer == -1)
+                    {
+                        throw new InvalidOperationException("No correct answer" + question.QuestionText);
+                    }
+                    questions.Add(question);
+                }
+            } 
         }
-    }
-
+    }     
 }
