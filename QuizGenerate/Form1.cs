@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using static QuizGenerate.Form1;
 
 namespace QuizGenerate
 {
     public partial class Form1 : Form
     {
-        private string result;
+        private object answer1;
+        private object YesNo;
+        private DialogResult Yes;
+        private DialogResult No;
 
         public Form1()
         {
@@ -23,101 +24,78 @@ namespace QuizGenerate
 
             public int Answer;
         }
-    
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Submit(object sender, EventArgs e)
         {
             button1.BackColor = Color.Aqua;
 
-            int result = 0;
-            int a = 1; 
-
-            DialogResult answer1 = MessageBox.Show("What year is 2002?", "Question 1", 
+            DialogResult answer1 = MessageBox.Show("What year is 2002?", "Question 1",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if(answer1 == DialogResult.Yes)
+            if (answer1 == DialogResult.Yes)
             {
-                
+                DialogResult = Properties.Resources.correctly;
+                DialogResult++;
             }
 
+            if (answer1 == DialogResult.No)
+            {
+                DialogResult = Properties.Resources.Error;
+                DialogResult++;
+            }
         }
 
         private static void Quiz(string[] args)
         {
-            var questions = new List<Question>();
 
-            using(var quizFileReader = new System.IO.StreamReader("questions.txt"))
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+              
+        }
+
+        private void RadioButton1_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+            if (answer1 == radioButton1)
             {
-                string line;
-                Question question;
+                return;
+            }
 
-                while ((line = quizFileReader.ReadLine()) != null)
-                {
-                    if (line.Length == 0)
-                    {
-                        continue;
-                    }
-
-                    question = new Question()
-                    {
-                        QuestionText = line,
-                        Choices = new string[]
-                        {
-                            quizFileReader.ReadLine(),
-                            quizFileReader.ReadLine(),
-                            quizFileReader.ReadLine(),
-                            quizFileReader.ReadLine()
-                        }
-                    };
-
-                    question.Answer = -1;
-
-#pragma warning disable CS0162 // Unreachable code detected
-                    for (int i = 0; i < 4; i ++)
-#pragma warning restore CS0162 // Unreachable code detected
-                    {
-                        if (question.Choices[i].StartsWith("!"))
-
-                        question.Choices[i] = question.Choices[i].Substring(1);
-                        question.Answer = 1;
-                        break;
-                    }
-                    if(question.Answer == -1)
-                    {
-                        throw new InvalidOperationException("No correct answer" + question.QuestionText);
-                    }
-                    questions.Add(question);
-                }
-            } 
+            if (false)
+            {
+              
+            }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton2_CheckedChanged_1(object sender, EventArgs e)
         {
-
+            if (answer1 == radioButton2)
+            {
+                return;
+            }
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton3_CheckedChanged_1(object sender, EventArgs e)
         {
-
+             if (answer1 == radioButton3)
+            {
+                return;
+            }
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton4_CheckedChanged_1(object sender, EventArgs e)
         {
-
+            if (answer1 == radioButton4)
+            {
+                return;
+            }
         }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-    }     
+    }
 }

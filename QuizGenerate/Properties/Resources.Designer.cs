@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Windows.Forms;
+
 namespace QuizGenerate.Properties
 {
 
@@ -33,6 +35,9 @@ namespace QuizGenerate.Properties
         internal Resources()
         {
         }
+
+        public static DialogResult Error { get; internal set; }
+        public static DialogResult correctly { get; internal set; }
 
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
