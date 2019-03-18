@@ -8,6 +8,8 @@ namespace QuizGenerate
 {
     public partial class Form1 : Form
     {
+        private string result;
+
         public Form1()
         {
             InitializeComponent();
@@ -21,33 +23,26 @@ namespace QuizGenerate
 
             public int Answer;
         }
-
-        struct Answer
-        {
-            //public string AnswerBox;
-
-            //public string[] question;
-
-            //public int quiz;
-        }
     
         private void Form1_Load(object sender, EventArgs e)
         {
             
         }
 
-        private void Generate(object sender, EventArgs e)
+        private void Submit(object sender, EventArgs e)
         {
             button1.BackColor = Color.Aqua;
-        }
 
-        private void CheckedListBox2_SelectedIndexChanged(object sender, EventArgs e)
-        { 
+            int result = 0;
+            int a = 1; 
 
-        }
+            DialogResult answer1 = MessageBox.Show("What year is 2002?", "Question 1", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            if(answer1 == DialogResult.Yes)
+            {
+                
+            }
 
         }
 
@@ -98,6 +93,31 @@ namespace QuizGenerate
                     questions.Add(question);
                 }
             } 
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }     
 }
