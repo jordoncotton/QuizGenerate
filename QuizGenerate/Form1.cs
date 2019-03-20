@@ -9,6 +9,8 @@ namespace QuizGenerate
         private object answer1;
         private bool Value;
 
+        public Action<EventArgs> OK { get; private set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace QuizGenerate
 
             if (answer1 == DialogResult.OK)
             {
-                  
+                OK = OnClick;
                 Console.ReadKey();
                 Console.Read();
             }
