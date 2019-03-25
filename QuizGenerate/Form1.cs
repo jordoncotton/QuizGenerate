@@ -92,19 +92,27 @@ namespace QuizGenerate
         public class Quiz
         {
             List<Question> questions = new List<Question>();
+            private static Quiz give;
+            private static Answer inputAnswer;
+            private static Question question;
 
             public static implicit operator Quiz(RadioButton v)
             {
-                throw new NotImplementedException();
+                Question question = QuestionText();
+                return give;
+            }
+
+            private static Question QuestionText()
+            {
+                Answer answer = inputAnswer;
+                return question;
             }
         }
 
         public class Answer
         {
             public string give;
-
             Answer answer = new Answer();
-
         }
 
         private void RadioButton1_CheckedChanged_1(object sender, EventArgs e)
@@ -128,8 +136,8 @@ namespace QuizGenerate
         }
         //Create question objects that represents the strcuture of the program.
         private void QuestionText(object sender, EventArgs e)
-        { 
-          
+        {
+            initializequiz();
         }
 
         private void initializequiz()
